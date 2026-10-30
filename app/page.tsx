@@ -132,7 +132,7 @@ export default function Home() {
   const todayMedsPending = medications.filter((m) => !m.takenToday).length;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 font-sans">
       {/* 1. Medical Safety Disclaimer Banner */}
       <MedicalDisclaimerBanner />
 
@@ -159,7 +159,7 @@ export default function Home() {
         {/* Dynamic Main Content Tab */}
         <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
           {!isHydrated ? (
-            <div className="h-64 flex items-center justify-center text-slate-400 text-sm">
+            <div className="h-64 flex items-center justify-center text-slate-400 dark:text-slate-500 text-sm">
               Loading CareBuddy workspace...
             </div>
           ) : (
@@ -228,10 +228,10 @@ export default function Home() {
       </div>
 
       {/* 4. Accessible & Ethical Healthcare Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 px-4 text-center text-xs text-slate-500">
+      <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 px-4 text-center text-xs text-slate-500 dark:text-slate-400">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>© 2026 CareBuddy Health. Built as a resilient AI-assisted healthcare starter template.</p>
-          <p className="text-slate-400">
+          <p className="text-slate-400 dark:text-slate-500">
             For medical emergencies, immediately contact local emergency services (911 / 999 / 112).
           </p>
         </div>

@@ -66,19 +66,19 @@ export default function ExplainerTab() {
     <div className="space-y-6 max-w-4xl mx-auto">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+        <h1 className="text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight flex items-center gap-2">
           <BookOpenCheck className="w-6 h-6 text-sky-600" />
           Medical Terminology & Lab Explainer
         </h1>
-        <p className="text-sm text-slate-500 mt-1">
+        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
           Demystify complex lab results, prescription terminology, and medical jargon into plain 5th-grade language.
         </p>
       </div>
 
       {/* Input Card */}
-      <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200/80 shadow-sm space-y-4">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
         <div>
-          <label className="block text-xs font-bold text-slate-700 uppercase mb-2">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase mb-2">
             Enter a Medical Term, Diagnostic Acronym, or Lab Test:
           </label>
           <div className="flex gap-2">
@@ -90,7 +90,7 @@ export default function ExplainerTab() {
                 if (e.key === "Enter") handleExplain();
               }}
               placeholder="e.g. TSH, Complete Blood Count, Bilirubin, Atorvastatin..."
-              className="flex-1 p-3 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+              className="flex-1 p-3 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white dark:bg-slate-900"
             />
             <button
               onClick={() => handleExplain()}
@@ -114,14 +114,14 @@ export default function ExplainerTab() {
 
         {/* Popular chips */}
         <div>
-          <span className="text-xs font-semibold text-slate-400 block mb-2">Or try a common lab test:</span>
+          <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 block mb-2">Or try a common lab test:</span>
           <div className="flex flex-wrap gap-2">
             {SAMPLE_TERMS.map((sample, idx) => (
               <button
                 key={idx}
                 onClick={() => handleExplain(sample)}
                 disabled={isLoading}
-                className="px-3 py-1.5 rounded-full text-xs font-medium bg-slate-50 border border-slate-200 hover:border-brand-300 hover:bg-brand-50 text-slate-700 transition"
+                className="px-3 py-1.5 rounded-full text-xs font-medium bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 hover:border-brand-300 dark:hover:border-sky-600 hover:bg-brand-50 dark:hover:bg-sky-950 text-slate-700 dark:text-slate-200 transition"
               >
                 {sample}
               </button>
@@ -132,12 +132,12 @@ export default function ExplainerTab() {
 
       {/* Explanation Output */}
       {explanation && (
-        <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200/80 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-slate-900">Plain-English Explanation</span>
+              <span className="text-sm font-bold text-slate-900 dark:text-slate-50">Plain-English Explanation</span>
               {isFallback && (
-                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-800">
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-200">
                   Local Mode
                 </span>
               )}
@@ -145,7 +145,7 @@ export default function ExplainerTab() {
 
             <button
               onClick={handleCopy}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
             >
               {copied ? (
                 <>
@@ -154,18 +154,18 @@ export default function ExplainerTab() {
                 </>
               ) : (
                 <>
-                  <Copy className="w-3.5 h-3.5 text-slate-500" />
+                  <Copy className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                   <span>Copy</span>
                 </>
               )}
             </button>
           </div>
 
-          <div className="text-sm text-slate-800 whitespace-pre-wrap leading-relaxed space-y-3">
+          <div className="text-sm text-slate-800 dark:text-slate-100 whitespace-pre-wrap leading-relaxed space-y-3">
             {explanation}
           </div>
 
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 flex items-start gap-2.5 text-xs text-amber-900">
+          <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-xl p-3.5 flex items-start gap-2.5 text-xs text-amber-900 dark:text-amber-100">
             <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
             <span>
               <strong>Clinical Context Notice:</strong> Individual reference ranges fluctuate across diagnostic

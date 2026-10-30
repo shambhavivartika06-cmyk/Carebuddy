@@ -11,7 +11,7 @@ export default function MedicalDisclaimerBanner() {
 
   return (
     <>
-      <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2 text-xs md:text-sm">
+      <div className="bg-amber-50 dark:bg-amber-950/40 border-b border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-100 px-4 py-2 text-xs md:text-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 flex-1">
             <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0" />
@@ -25,7 +25,7 @@ export default function MedicalDisclaimerBanner() {
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={() => setShowEmergencyModal(true)}
-              className="inline-flex items-center gap-1 font-medium text-amber-800 hover:text-amber-950 underline text-xs"
+              className="inline-flex items-center gap-1 font-medium text-amber-800 dark:text-amber-200 hover:text-amber-950 underline text-xs"
             >
               <PhoneCall className="w-3 h-3" />
               Emergency Lines
@@ -43,7 +43,7 @@ export default function MedicalDisclaimerBanner() {
 
       {showEmergencyModal && (
         <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-200">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-200 dark:border-slate-700">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2 text-red-600">
                 <AlertCircle className="w-6 h-6" />
@@ -51,30 +51,30 @@ export default function MedicalDisclaimerBanner() {
               </div>
               <button
                 onClick={() => setShowEmergencyModal(false)}
-                className="text-slate-400 hover:text-slate-600 p-1"
+                className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 p-1"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <p className="text-sm text-slate-600 mb-4">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
               If you or someone around you is experiencing chest pain, difficulty breathing, sudden severe bleeding, or
               loss of consciousness, please contact emergency dispatch immediately:
             </p>
             <div className="space-y-2 mb-6">
               <div className="flex items-center justify-between p-3 rounded-lg bg-red-50 border border-red-100">
-                <span className="font-semibold text-slate-800">United States & Canada</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-100">United States & Canada</span>
                 <span className="font-mono font-bold text-red-600 text-lg">911</span>
               </div>
               <div className="flex items-center justify-between p-3 rounded-lg bg-red-50 border border-red-100">
-                <span className="font-semibold text-slate-800">United Kingdom</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-100">United Kingdom</span>
                 <span className="font-mono font-bold text-red-600 text-lg">999 / 111</span>
               </div>
               <div className="flex items-center justify-between p-3 rounded-lg bg-red-50 border border-red-100">
-                <span className="font-semibold text-slate-800">European Union</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-100">European Union</span>
                 <span className="font-mono font-bold text-red-600 text-lg">112</span>
               </div>
               <div className="flex items-center justify-between p-3 rounded-lg bg-red-50 border border-red-100">
-                <span className="font-semibold text-slate-800">India</span>
+                <span className="font-semibold text-slate-800 dark:text-slate-100">India</span>
                 <span className="font-mono font-bold text-red-600 text-lg">112 / 102</span>
               </div>
             </div>

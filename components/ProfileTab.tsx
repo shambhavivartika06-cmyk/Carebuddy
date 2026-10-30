@@ -53,35 +53,35 @@ export default function ProfileTab({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+          <h1 className="text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight flex items-center gap-2">
             <UserCheck className="w-6 h-6 text-brand-600" />
             Health Profile & Safety Baseline
           </h1>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             Stored locally in your browser to personalize AI advice and assist doctor visit preparation.
           </p>
         </div>
 
         {formData.isDemoData && (
-          <span className="self-start sm:self-auto text-xs px-2.5 py-1 rounded-full font-bold bg-amber-100 text-amber-800 border border-amber-200">
+          <span className="self-start sm:self-auto text-xs px-2.5 py-1 rounded-full font-bold bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-800">
             Demo Sample Data Loaded
           </span>
         )}
       </div>
 
       {showSavedToast && (
-        <div className="p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm flex items-center gap-2">
+        <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 rounded-xl text-sm flex items-center gap-2">
           <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
           <span>Profile saved securely to your browser localStorage!</span>
         </div>
       )}
 
       {/* Main Profile Form */}
-      <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200/80 shadow-sm">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
         <form onSubmit={handleSave} className="space-y-5">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="sm:col-span-2">
-              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase mb-1">
                 Full Name *
               </label>
               <input
@@ -90,12 +90,12 @@ export default function ProfileTab({
                 onChange={(e) => handleChange("name", e.target.value)}
                 required
                 placeholder="e.g. Alex Rivera"
-                className="w-full p-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                className="w-full p-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase mb-1">
                 Age
               </label>
               <input
@@ -103,20 +103,20 @@ export default function ProfileTab({
                 value={formData.age}
                 onChange={(e) => handleChange("age", e.target.value)}
                 placeholder="e.g. 34"
-                className="w-full p-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                className="w-full p-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase mb-1">
                 Blood Group
               </label>
               <select
                 value={formData.bloodGroup}
                 onChange={(e) => handleChange("bloodGroup", e.target.value)}
-                className="w-full p-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+                className="w-full p-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white dark:bg-slate-900"
               >
                 {BLOOD_GROUPS.map((bg) => (
                   <option key={bg} value={bg}>
@@ -127,7 +127,7 @@ export default function ProfileTab({
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase mb-1">
                 Known Drug / Food Allergies
               </label>
               <input
@@ -135,13 +135,13 @@ export default function ProfileTab({
                 value={formData.allergies}
                 onChange={(e) => handleChange("allergies", e.target.value)}
                 placeholder="e.g. Penicillin, Peanuts, Sulfa drugs"
-                className="w-full p-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                className="w-full p-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase mb-1">
               Existing Chronic Conditions
             </label>
             <input
@@ -149,17 +149,17 @@ export default function ProfileTab({
               value={formData.conditions}
               onChange={(e) => handleChange("conditions", e.target.value)}
               placeholder="e.g. Mild asthma, Hypertension, Migraines, Type 2 Diabetes"
-              className="w-full p-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+              className="w-full p-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
             />
           </div>
 
-          <div className="border-t border-slate-100 pt-4">
-            <h3 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-3">
+          <div className="border-t border-slate-100 dark:border-slate-800 pt-4">
+            <h3 className="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider mb-3">
               Emergency Contact Information
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase mb-1">
                   Contact Name & Relation
                 </label>
                 <input
@@ -167,12 +167,12 @@ export default function ProfileTab({
                   value={formData.emergencyContactName}
                   onChange={(e) => handleChange("emergencyContactName", e.target.value)}
                   placeholder="e.g. Sarah Rivera (Spouse)"
-                  className="w-full p-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                  className="w-full p-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase mb-1">
                   Emergency Phone Number
                 </label>
                 <input
@@ -180,18 +180,18 @@ export default function ProfileTab({
                   value={formData.emergencyContactPhone}
                   onChange={(e) => handleChange("emergencyContactPhone", e.target.value)}
                   placeholder="e.g. +1 (555) 234-5678"
-                  className="w-full p-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                  className="w-full p-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
                 />
               </div>
             </div>
           </div>
 
-          <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-100">
+          <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={handleLoadDemo}
-                className="text-xs font-semibold text-slate-600 hover:text-slate-900 px-3 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 transition"
+                className="text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
               >
                 Load Sample Demo Profile
               </button>
@@ -203,7 +203,7 @@ export default function ProfileTab({
                     onResetAllData();
                   }
                 }}
-                className="text-xs font-semibold text-rose-600 hover:text-rose-800 px-3 py-2 rounded-xl border border-rose-100 hover:bg-rose-50 transition"
+                className="text-xs font-semibold text-rose-600 hover:text-rose-800 px-3 py-2 rounded-xl border border-rose-100 dark:border-rose-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition"
               >
                 Reset All Data
               </button>

@@ -115,18 +115,18 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+          <h1 className="text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight flex items-center gap-2">
             <Sparkles className="w-6 h-6 text-brand-600" />
             AI Health Assistant
           </h1>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             Ask wellness questions in natural language. Powered by Gemini API with clinical safety guardrails.
           </p>
         </div>
 
         <button
           onClick={() => setMessages(INITIAL_MESSAGES)}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-100 transition self-start sm:self-auto"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition self-start sm:self-auto"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           Clear Chat
@@ -134,7 +134,7 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
       </div>
 
       {/* Main Chat Box Container */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm flex flex-col h-[580px] overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm flex flex-col h-[580px] overflow-hidden">
         {/* Messages Stream */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
           {messages.map((msg) => (
@@ -163,13 +163,13 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
                   msg.sender === "user"
                     ? "bg-brand-600 text-white rounded-tr-none shadow-sm"
                     : msg.isEmergencyWarning
-                    ? "bg-rose-50 border-2 border-rose-300 text-rose-950 rounded-tl-none"
-                    : "bg-slate-50 border border-slate-200/80 text-slate-800 rounded-tl-none"
+                    ? "bg-rose-50 dark:bg-rose-950/40 border-2 border-rose-300 text-rose-950 rounded-tl-none"
+                    : "bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-slate-800 dark:text-slate-100 rounded-tl-none"
                 }`}
               >
                 {/* Fallback Notice Badge */}
                 {msg.isFallback && (
-                  <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 font-semibold text-[10px] uppercase mb-2">
+                  <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-200 font-semibold text-[10px] uppercase mb-2">
                     <HelpCircle className="w-3 h-3" />
                     Local Knowledge Mode
                   </div>
@@ -178,7 +178,7 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
                 <div className="whitespace-pre-wrap">{msg.text}</div>
                 <div
                   className={`text-[10px] mt-2 text-right ${
-                    msg.sender === "user" ? "text-brand-200" : "text-slate-400"
+                    msg.sender === "user" ? "text-brand-200" : "text-slate-400 dark:text-slate-500"
                   }`}
                 >
                   {msg.timestamp}
@@ -194,11 +194,11 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
           ))}
 
           {isLoading && (
-            <div className="flex gap-3 items-center text-slate-500 text-xs py-2">
+            <div className="flex gap-3 items-center text-slate-500 dark:text-slate-400 text-xs py-2">
               <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-mint-500 text-white flex items-center justify-center flex-shrink-0">
                 <Bot className="w-4 h-4" />
               </div>
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 flex items-center gap-2">
+              <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 flex items-center gap-2">
                 <Loader2 className="w-4 h-4 animate-spin text-brand-600" />
                 <span>CareBuddy is consulting clinical safety rules...</span>
               </div>
@@ -209,14 +209,14 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
         </div>
 
         {/* Suggested Prompts Carousel */}
-        <div className="px-4 py-2 bg-slate-50/60 border-t border-slate-100 flex items-center gap-2 overflow-x-auto text-xs no-scrollbar">
-          <span className="text-[11px] font-semibold text-slate-400 flex-shrink-0">Try asking:</span>
+        <div className="px-4 py-2 bg-slate-50/60 dark:bg-slate-900/80 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2 overflow-x-auto text-xs no-scrollbar">
+          <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 flex-shrink-0">Try asking:</span>
           {SUGGESTED_PROMPTS.map((prompt, idx) => (
             <button
               key={idx}
               onClick={() => handleSend(prompt)}
               disabled={isLoading}
-              className="px-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-brand-300 hover:bg-brand-50 text-slate-700 whitespace-nowrap transition text-xs flex-shrink-0"
+              className="px-2.5 py-1 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-brand-300 dark:hover:border-sky-600 hover:bg-brand-50 dark:hover:bg-sky-950 text-slate-700 dark:text-slate-200 whitespace-nowrap transition text-xs flex-shrink-0"
             >
               {prompt}
             </button>
@@ -224,7 +224,7 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
         </div>
 
         {/* Input Bar */}
-        <div className="p-3 bg-white border-t border-slate-200">
+        <div className="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700">
           <div className="flex items-center gap-2">
             <input
               type="text"
@@ -233,7 +233,7 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
               onKeyDown={handleKeyDown}
               disabled={isLoading}
               placeholder="Ask about wellness, hydration, symptoms, or prep questions..."
-              className="flex-1 p-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 disabled:bg-slate-50"
+              className="flex-1 p-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 disabled:bg-slate-50 dark:disabled:bg-slate-900"
             />
             <button
               onClick={() => handleSend()}
@@ -244,7 +244,7 @@ export default function AssistantTab({ profile }: AssistantTabProps) {
               <Send className="w-4 h-4" />
             </button>
           </div>
-          <div className="flex items-center justify-between text-[11px] text-slate-400 mt-2 px-1">
+          <div className="flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500 mt-2 px-1">
             <span>🛡️ Medical safety guardrails active</span>
             <span>Keys protected via server proxy</span>
           </div>
